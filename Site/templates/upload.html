@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Upload</title>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+	 <title>Hielo by TEMPLATED</title>
+	 <meta charset="utf-8" />
+	 <meta name="viewport" content="width=device-width, initial-scale=1" />
+	 <link rel="stylesheet" href="static/assets/css/main.css" />
+ </head>
+
+<body>
+<!-- Header -->
+	<header id="header" class="alt">
+		<div class="logo"><a href="index.html"> Group C06 </a></div>
+		<a href="#menu">Menu</a>
+	</header>
+
+	<!-- Nav Bar -->
+		<nav id="menu">
+			<ul class="links">
+				<li><a href="index.html">Home</a></li>
+				<li><a href="upload.html">Upload Data</a></li>
+			</ul>
+		</nav>
+
+	<!-- wrapper -->
+		<section id="One" class = "wrapper style3">
+			<div class="inner">
+				<header class="align-center">
+					<p> Upload </p>
+				</header>
+			</div>
+		</section>
+
+<!-- Upload page -->
+	<section id="two" class="wrapper style2">
+		<div class="inner">
+			<div class="box">
+				<div class="content">
+					<header class ="align-center">
+						<form id="upload-form" action="{{ url_for('uploaded') }}" method="POST" enctype="multipart/form-data">
+    					<p>Group c06</p>
+							<h2>Upload</h2>
+    					<input id="file-picker" type="file" name="file" multiple>
+    					<div id="msg"></div>
+    					<input type="submit" value='Upload' id="upload-button">
+						</form>
+					</header>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Footer -->
+	<footer id="footer">
+		<div class="container">
+			<ul class="icons">
+				<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+			</ul>
+		</div>
+	</footer>
+
+
+</body>
+<script>
+    $("#file-picker").change(function(){
+        var input = document.getElementById('file-picker');
+        for (var i=0; i<input.files.length; i++)
+        {
+        //koala.jpg, koala.JPG substring(index) lastIndexOf('a') koala.1.jpg
+            var ext= input.files[i].name.substring(input.files[i].name.lastIndexOf('.')+1).toLowerCase()
+            if ((ext == 'tre') || (ext == 'nwk'))
+            {
+                $("#msg").text("Files are supported")
+            }
+            else
+            {
+                $("#msg").text("Files are NOT supported")
+                document.getElementById("file-picker").value ="";
+            }
+        }
+    } );
+</script>
+
+<!-- Scripts -->
+	<script src="static/assets/js/jquery.min.js"></script>
+	<script src="static/assets/js/jquery.scrollex.min.js"></script>
+	<script src="static/assets/js/skel.min.js"></script>
+	<script src="static/assets/js/util.js"></script>
+	<script src="static/assets/js/main.js"></script>
+
+</html>
